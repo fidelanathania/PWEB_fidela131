@@ -11,19 +11,15 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
         $(document).ready(function () {
-            // Adding smooth scrolling
             $("a").on('click', function (event) {
                 if (this.hash !== "") {
-                    // Prevent default anchor click behavior
                     event.preventDefault();
-                    // Store hash
                     var hash = this.hash;
-                    // Using .animate() to add smooth page scroll
+                    // Using jQuery's animate() method to add smooth page scroll
                     // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
                     $('html, body').animate({
                         scrollTop: $(hash).offset().top
                     }, 800, function () {
-                        // Add hash (#) to URL when done scrolling (default click behavior)
                         window.location.hash = hash;
                     });
                 }
@@ -62,19 +58,17 @@
 
 <body>
 
-    <div class="py-4 text-center">
+    <div class="main py-4 text-center" id="section1">
         <h3>
-            <a href="#section2" style="color: black;">Click to Scroll the Power Calculator</a>
+            <a href="#section2" style="color:darkred;">Click to Scroll Down to the Power Calculator</a>
         </h3>
-    </div>
-
-    <div class="main">
-        <section></section>
     </div>
 
     <div class="main" id="section2">
         <section style="background-color:rgba(212, 212, 212, 0.425)">
+
             <div class="container">
+
                 <h2 class="text-center"> Power Calculator </h2>
                 <hr />
 
@@ -116,6 +110,7 @@
                             </td>
                         </tr>
                     </table>
+
                     <script>
                         $(function () {
                             $('#resetBtn').click(function () {
@@ -126,9 +121,17 @@
                             });
                         });
                     </script>
+
                     <input type="button" class="btn btn-light btn-outline-dark btn-lg btn-block" value=" RESET "
                         id="resetBtn">
                 </div>
+
+                <div class="py-4 text-center">
+                    <h3>
+                        <a href="#section1" style="color:darkred;">Click to Scroll Up the Page</a>
+                    </h3>
+                </div>
+
             </div>
         </section>
     </div>
