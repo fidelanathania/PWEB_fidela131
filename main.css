@@ -29,11 +29,6 @@ input {
     padding: 20px;
 }
 
-a {
-    text-decoration: none;
-    color: #e51;
-}
-
 form {
     width: 600px;
     margin: 0 auto;
