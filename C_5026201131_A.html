@@ -24,6 +24,8 @@
 
             if (name == '') {
                 alert('Please enter your name');
+                document.getElementById("name").focus();
+                return false;
             } else if (!letters.test(name)) {
                 alert('Name field required only alphabet characters');
                 document.getElementById("name").focus();
@@ -33,7 +35,7 @@
                 document.getElementById("name").focus();
                 return false;
             } else if (nrp == '') {
-                alert('Please enter your nrp');
+                alert('Please enter your NRP number');
                 document.getElementById("nrp").focus();
                 return false;
             } else if (!numbers.test(nrp)) {
