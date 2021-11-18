@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Form Registration with Validation</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="main.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        function registration() {
+
+            $("#myForm").on("submit", function(form) {
+                if (!$("#agree").prop("checked")) {
+                    $("#agree_error").show();
+                } else {
+                    $("#agree_error").hide();
+                }
+                return false;
+            })
+
+            var name = document.getElementById("name").value;
+            var address = document.getElementById("address").value;
+            var email = document.getElementById("email").value;
+            var pwd = document.getElementById("pwd").value;
+            var cpwd = document.getElementById("cpwd").value;
+            var phone = document.getElementById("phone").value;
+            var sel = document.getElementById("sel").value;
+            var zipcode = document.getElementById("zipcode").value;
+            var agree = document.getElementById("agree").value
+            var agree_error = document.getElementById("agree").value;
+
+            //name expression code (alphabets only)
+            var letters = /^[A-Za-z]+$/;
+            //pwd expression code
+            var pwd_expression = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])/;
+            //email id expression code
+            var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+            // numberss digit only
+            var numbers = /^[0-9]+$/;
+
+
+            if (name == '') {
+                alert('Please enter your name');
+            } else if (!letters.test(name)) {
+                alert('Name field required only alphabet characters');
+            } else if (address == '') {
+                alert('Please enter your address');
+            } else if (email == '') {
+                alert('Please enter your email');
+            } else if (!filter.test(email)) {
+                alert('Invalid email');
+            } else if (pwd == '') {
+                alert('Please enter Password');
+            } else if (cpwd == '') {
+                alert('Enter Confirm Password');
+            } else if (!pwd_expression.test(pwd)) {
+                alert('Upper case, Lower case, and Numeric letter are required in Password filed');
+            } else if (pwd != cpwd) {
+                alert('Password not Matched');
+            } else if (document.getElementById("pwd").value.length < 8) {
+                alert('Password minimum length is 8');
+            } else if (document.getElementById("pwd").value.length > 16) {
+                alert('Password max length is 16');
+            } else if (phone == '') {
+                alert('Please enter your phone number');
+            } else if (!numbers.test(phone)) {
+                alert('Phone field required only numbers characters');
+            } else if (document.getElementById("phone").value.length < 7) {
+                alert('Phone number minimum length is 7');
+            } else if (document.getElementById("zipcode").value.length < 6) {
+                alert('Zipcode must be 6 digits!');
+            } else if (!numbers.test(zipcode)) {
+                alert('Zipcode required only numbers characters');
+            } else if (sel == '') {
+                alert('Please select an option!');
+            } else {
+                alert('Thank You for the Registration & You are Redirecting to My University Website');
+                // Redirecting to other page. 
+                window.location = "https://www.its.ac.id/";
+            }
+
+        }
+
+        function checkPwd() {
+            var x = document.getElementById("pwd");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+        }
+
+        function checkCpwd() {
+            var x = document.getElementById("cpwd");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+        }
+    </script>
+    <style>
+        .button {
+            background-color: #957DAD;
+            color: white;
+            border-radius: 4px;
+            padding: 10px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+        
+        .button:hover {
+            background-color: #ffffff;
+            color: rgb(31, 31, 31);
+            border: 2px solid #957DAD;
+        }
+        
+        .button1 {
+            width: 150px;
+        }
+        
+        .button2 {
+            width: 190px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2 class="title pb-4" style="text-align: center;">REGISTRATION FORM</h2>
+        <form class="needs-validation" name="myForm" id="myForm" action="/action_page.php" onsubmit="return registration()" method="post" novalidate>
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" class="form-control" id="name" placeholder="Enter Your Name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="address">Address:</label>
+                <input type="text" class="form-control" id="address" placeholder="Enter Your Address" name="address" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="text" class="form-control" id="email" placeholder="Enter Your Email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="pwd">Password:</label>
+                <input type="password" class="form-control" id="pwd" placeholder="Enter Your Password" value="" name="pwd" required>
+                <input type="checkbox" onclick="checkPwd()"> Show Password
+            </div>
+            <div class="form-group">
+                <label for="cpwd">Confirm Password:</label>
+                <input type="password" class="form-control" id="cpwd" placeholder="Enter Your Password" value="" name="cpwd" required>
+                <input type="checkbox" onclick="checkCpwd()"> Show Password
+            </div>
+            <div class="form-group">
+                <label for="phone">Telephone:</label>
+                <input type="text" class="form-control" id="phone" placeholder="Enter Your Phone Number" name="phone" required>
+            </div>
+            <div class="form-group">
+                <label for="sel">SELECT YOUR COURSE</label>
+                <select class="form-control sel" id="sel" type="text" value="" name="sel" onchange="registration()" required>
+                    <option value=""></option>
+                    <option value="1">BTECH</option>
+                    <option value="2">BBA</option>
+                    <option value="3">BCA</option>
+                    <option value="4">B.COM</option>
+                    <option value="5">GEEKFORGEEKS</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="zipcode">Zipcode:</label>
+                <input type="text" class="form-control" id="zipcode" placeholder="Enter Your Zipcode" name="zipcode" maxlength="6" pattern="\d{6}" required>
+            </div>
+            <div class="form-group form-check">
+                <label class="custom-control custom-checkbox">
+                    <input class="custom-control-input" type="checkbox" id="agree" name="agree" value="yes" required>
+                    <label class="custom-control-label" for="agree">I agree to the terms & condition.</label>
+                <div style="display:none; color:red" id="agree_error">
+                    Can't proceed as you didn't agree to the terms!
+                </div>
+                </label>
+            </div>
+            <button type="submit" class="btn button button1" onclick="registration()"> Submit </button>
+            <button type="reset" class="btn button button2"> Clear Form </button>
+        </form>
+    </div>
+</body>
+
+</html>
